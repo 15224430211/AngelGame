@@ -5,6 +5,7 @@ class SiteUserController extends SiteController {
     public function getIndex($uid = null) {
         !is_null($uid)? : $uid = Session::get('user')['uid'];
         $user_info = $this->getUserInfo($uid);
+//        print_r($user_info);die;
         $play_want_games = $this->getPlayStatus($uid, 1, true);
         $playing_games = $this->getPlayStatus($uid, 2, true);
         $played_games = $this->getPlayStatus($uid, 3, true);
@@ -24,7 +25,7 @@ class SiteUserController extends SiteController {
     }
 
     public function getGameList($uid, $play_status) {
-        $games_info = $this->getPlayStatus($uid, $this->transformStatus($play_status));
+        $games_info = $this->getPlayStatusWithMe($uid, $this->transformStatus($play_status));
         return View::make('Site.user.game-list')
                         ->with('games_info', $games_info);
     }
@@ -47,6 +48,16 @@ class SiteUserController extends SiteController {
         is_null($is_limit) ? : $sql.=' limit 5';
         $sql.=') T1 where T2.game_uid = T1.game_uid';
         return DB::select($sql, array($uid, $play_status));
+    }
+
+    //three status details
+    protected function getPlayStatusWithMe($uid, $play_status) {
+        $sql = 'select T3.*,T4.play_status,T4.updated_at from (select T2.* from ag_game_info T2, '
+                . '(select game_uid from ag_user_game_relation '
+                . 'where uid = ? AND play_status = ? order by updated_at desc';
+        $sql.=') T1 where T2.game_uid = T1.game_uid) T3 LEFT JOIN ag_user_game_relation T4 ';
+        $sql.='ON T3.game_uid = T4.game_uid AND T4.uid = ?';
+        return DB::select($sql, array($uid, $play_status, Session::get('user')['uid']));
     }
 
     public function ajaxUserGameRelation() {
