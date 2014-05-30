@@ -79,7 +79,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <img class="img-rounded" src="/assets/images/UserPic/{{Session::get('user')['avatar']}}">
+                            <img class="img-rounded" src="/assets/images/UserPic/medium/{{Session::get('user')['avatar']}}">
                         </div>
                         <div class="col-md-7 text-center">
                             <strong class="text-primary">

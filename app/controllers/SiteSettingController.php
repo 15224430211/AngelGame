@@ -6,6 +6,16 @@ class SiteSettingController extends SiteController {
         return View::make('Site.setting.avatar');
     }
 
+    public function putIndex() {
+        $input = Input::all();
+        $userdb = Userdb::find(Session::get('user')['uid']);
+        $userdb->address = $input['address'];
+        if ($userdb->save()) {
+            Session::get('user')['address'] = $input['address'];
+            return Redirect::back();
+        }
+    }
+
     public function putAvatar() {
         // 获取所有表单数据
         $data = Input::all();
@@ -37,6 +47,7 @@ class SiteSettingController extends SiteController {
             $avatar->resize(220, 220)->save(public_path('assets/images/UserPic/large/' . $hashname));
             $avatar->resize(128, 128)->save(public_path('assets/images/UserPic/medium/' . $hashname));
             $avatar->resize(64, 64)->save(public_path('assets/images/UserPic/small/' . $hashname));
+            Session::get('user')['avatar'] = $hashname;
             // 删除旧头像
             File::delete(
                     public_path('assets/images/UserPic/large/' . $oldImage), public_path('assets/images/UserPic/medium/' . $oldImage), public_path('assets/images/UserPic/small/' . $oldImage)
