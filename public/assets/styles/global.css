@@ -1,0 +1,85 @@
+/*for game.detail*/
+.star{
+    width: 22px;
+    height: 22px;
+    background-image: url(/assets/images/img/score/black_star.gif);
+    background-size: 22px;
+    float: left;
+}
+.star-light{background-image: url(/assets/images/img/score/light_star.gif);}
+.star-click{background-image: url(/assets/images/img/score/click_star.gif);}
+.star-black{background-image: url(/assets/images/img/score/black_star.gif);}
+#status-modal label.active{
+    background-color: #3bafda;
+    border-color: #3bafda;
+}
+.game-description{
+    line-height: 1.7;
+}
+/*for search.index*/
+.hr-margin-10{
+    margin: 10px 0px;
+}
+
+/*for user.index*/
+.user-game-list .thumbnail{
+    -webkit-box-shadow: none; 
+    -moz-box-shadow: none;
+    box-shadow: none;
+    /*transition: none;*/
+    /*border-top-width: 6px;*/
+    -webkit-transition: all 0.25s ease-in-out;
+    border: 2px solid #FFF;
+    border-radius: 0px;
+}
+.user-game-list .thumbnail:hover{
+    /*margin-bottom: 7px;*/
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-color: #1abc9c;
+}
+.user-game-list .thumbnail img{
+    width: 100%;
+    height: 120px;
+}
+.user-game-list .caption{
+    padding: 5px 0px 0px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*for index.login && index.register*/
+.login-panel,.register-panel{
+    background-image: url(/assets/images/img/login-right.jpg);
+    background-size: 100% 100%;
+    height: 625px;
+}
+.login-panel>div,.register-panel>div{
+    background-color: rgba(255,255,255,.8);
+    height: inherit;
+}
+/*for search-bar*/
+.search-bar .nav{
+    margin-top: 20px;
+}
+.search-bar .nav>li>a{
+    text-shadow: 0px 1px #FFF;
+}
+/*for nav*/
+nav.navbar{
+    margin-bottom: 0px;
+}
+body{
+    padding-top: 70px;
+    background-image: url(/assets/images/img/bodywall.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
+}
+.content{
+    min-height: 600px;
+}
+footer{
+    margin-top: 20px;
+    background-color: rgba(0,0,0,.8);
+}
