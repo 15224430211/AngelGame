@@ -2,6 +2,24 @@
 
 class SiteController extends BaseController {
 
+    //get one user info by uid
+    protected function getUserInfo($uid) {
+        return Userdb::where('uid', $uid)->first();
+    }
+
+    protected function checkUserRelation($follower) {
+        return FriendList::whereRaw('uid = ? AND follow_uid = ?', array(Session::get('user')['uid'], $follower))
+                        ->pluck('id');
+    }
+
+    protected function countFollow($uid) {
+        return FriendList::where('uid', $uid)->count();
+    }
+
+    protected function countFans($uid) {
+        return FriendList::where('follow_uid', $uid)->count();
+    }
+
     protected function transformStatus($status) {
         switch ($status) {
             case 'want':

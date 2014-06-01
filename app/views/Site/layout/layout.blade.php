@@ -37,7 +37,7 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/comment"><span class="glyphicon glyphicon-comment"></span> 评论</a></li>
                                 <li><a href="/message"><span class="glyphicon glyphicon-envelope"></span> 短信</a></li>
-                                <li><a href="/friend"><span class="glyphicon glyphicon-user"></span> 好友</a></li>
+                                <!--<li><a href="/follow"><span class="glyphicon glyphicon-user"></span> 好友</a></li>-->
                                 <li><a href="/setting"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
                                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
                                 <li><a href="#">Link</a></li>

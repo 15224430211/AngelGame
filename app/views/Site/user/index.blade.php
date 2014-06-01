@@ -10,7 +10,7 @@
         <div class="col-md-8">
             <div class="panel panel-default user-game-list">
                 <div class="panel-body">
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <h4>正在玩的游戏······<a href="/user/{{$user_info['uid']}}/playing">({{$playing_num}})部</a></h4>
@@ -70,29 +70,15 @@
                         </div>
                         @endforeach
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img class="img-rounded" src="/assets/images/UserPic/medium/{{$user_info['avatar']}}">
-                        </div>
-                        <div class="col-md-7 text-center">
-                            <strong class="text-primary">
-                                常居：{{$user_info['address']}}<br>
-                                {{$user_info['username']}}<br>
-                                {{substr($user_info['created_at'],0,10)}}加入
-                            </strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('Site.layout.user-info')
     </div>
 </div>
 @stop
 
+@section('foot-assets')
+<script src="/assets/scripts/Site/friend.js" type="text/javascript"></script>
+@stop

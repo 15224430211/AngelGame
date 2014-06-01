@@ -3,7 +3,7 @@
 class SiteSettingController extends SiteController {
 
     public function getIndex() {
-        return View::make('Site.setting.avatar');
+        return View::make('Site.setting.setting');
     }
 
     public function putIndex() {

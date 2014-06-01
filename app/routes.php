@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the Closure to execute when that URI is requested.
+  |
+ */
 
 Route::get('/', 'SiteIndexController@getIndex');
 Route::controller('index', 'SiteIndexController');
@@ -21,5 +21,9 @@ Route::group(array('before' => 'islogin'), function() {
     Route::get('search/{q?}', 'SiteSearchController@getIndex');
     Route::get('game/{game?}', 'SiteGameController@getIndex');
     Route::post('game', 'SiteGameController@postIndex');
-    Route::controller('setting','SiteSettingController');
+    Route::controller('setting', 'SiteSettingController');
+    Route::get('follow/{uid?}', 'SiteFriendController@getFollow');
+    Route::post('follow', 'SiteFriendController@postFollow');
+    Route::get('fans/{uid?}', 'SiteFriendController@getFans');
+//    Route::post('fans', 'SiteFriendController@postFans');
 });

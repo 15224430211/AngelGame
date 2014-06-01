@@ -13,6 +13,9 @@ class SiteUserController extends SiteController {
         $play_want_num = $this->countPlayStatus($uid, 1);
         $playing_num = $this->countPlayStatus($uid, 2);
         $played_num = $this->countPlayStatus($uid, 3);
+
+        $countFans = $this->countFans($uid);
+        $countFollow = $this->countFollow($uid);
         return View::make('Site.user.index')
                         ->with('play_want_num', $play_want_num)
                         ->with('playing_num', $playing_num)
@@ -21,6 +24,9 @@ class SiteUserController extends SiteController {
                         ->with('playing_games', $playing_games)
                         ->with('played_games', $played_games)
                         ->with('user_info', $user_info)
+                        ->with('countFollow', $countFollow)
+                        ->with('countFans', $countFans)
+                        ->with('user_relation', $this->checkUserRelation($uid))
         ;
     }
 
@@ -28,11 +34,6 @@ class SiteUserController extends SiteController {
         $games_info = $this->getPlayStatusWithMe($uid, $this->transformStatus($play_status));
         return View::make('Site.user.game-list')
                         ->with('games_info', $games_info);
-    }
-
-    //get one user info by uid
-    protected function getUserInfo($uid) {
-        return Userdb::where('uid', $uid)->first();
     }
 
     //three status count
@@ -50,7 +51,7 @@ class SiteUserController extends SiteController {
         return DB::select($sql, array($uid, $play_status));
     }
 
-    //three status details
+    //three status details show me status
     protected function getPlayStatusWithMe($uid, $play_status) {
         $sql = 'select T3.*,T4.play_status,T4.updated_at from (select T2.* from ag_game_info T2, '
                 . '(select game_uid from ag_user_game_relation '
