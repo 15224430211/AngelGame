@@ -12,7 +12,7 @@
             <div class="col-md-offset-2 col-md-8">
                 <ul class="nav nav-pills nav-justified">
                     <li><a href="/user">我的游戏</a></li>
-                    <li><a href="#">友邻广播</a></li>
+                    <li><a href="/tweet">友邻广播</a></li>
                     <li><a href="#">猜测喜欢</a></li>
                     <li><a href="#">游戏标签</a></li>
                     <li><a href="#">我的日记</a></li>

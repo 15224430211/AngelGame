@@ -25,5 +25,6 @@ Route::group(array('before' => 'islogin'), function() {
     Route::get('follow/{uid?}', 'SiteFriendController@getFollow');
     Route::post('follow', 'SiteFriendController@postFollow');
     Route::get('fans/{uid?}', 'SiteFriendController@getFans');
+    Route::controller('tweet','SiteTweetController');
 //    Route::post('fans', 'SiteFriendController@postFans');
 });
