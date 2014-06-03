@@ -60,4 +60,16 @@ class SiteSettingController extends SiteController {
         }
     }
 
+    public function postIntro() {
+//        echo Input::get('intro');die;
+        $intro = str_replace("\n", "\n<br>", Input::get('intro'));
+        $userdb = Userdb::find(Session::get('user')['uid']);
+        $userdb->intro = $intro;
+        if ($userdb->save()) {
+            echo 'success';
+        } else {
+            echo "数据库错误";
+        }
+    }
+
 }

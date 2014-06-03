@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('Site.layout.search-bar')
 
     <div class="row">
         <div class="col-md-8">
