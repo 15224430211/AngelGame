@@ -1,12 +1,15 @@
 <?php
 
-class SiteSettingController extends SiteController {
+class SiteSettingController extends SiteController
+{
 
-    public function getIndex() {
+    public function getIndex()
+    {
         return View::make('Site.setting.setting');
     }
 
-    public function putIndex() {
+    public function putIndex()
+    {
         $input = Input::all();
         $userdb = Userdb::find(Session::get('user')['uid']);
         $userdb->address = $input['address'];
@@ -16,7 +19,8 @@ class SiteSettingController extends SiteController {
         }
     }
 
-    public function putAvatar() {
+    public function putAvatar()
+    {
         // 获取所有表单数据
         $data = Input::all();
         // 创建验证规则
@@ -34,7 +38,7 @@ class SiteSettingController extends SiteController {
         if ($validator->passes()) {
             // 验证成功
             $image = Input::file('avatar');
-            $ext = $image->guessClientExtension();  // 根据 mime 类型取得真实拓展名
+            $ext = $image->guessClientExtension(); // 根据 mime 类型取得真实拓展名
             $fullname = $image->getClientOriginalName(); // 客户端文件名，包括客户端拓展名
             $hashname = date('H.i.s') . '-' . md5($fullname) . '.' . $ext; // 哈希处理过的文件名，包括真实拓展名
             // 图片信息入库
@@ -50,7 +54,7 @@ class SiteSettingController extends SiteController {
             Session::get('user')['avatar'] = $hashname;
             // 删除旧头像
             File::delete(
-                    public_path('assets/images/UserPic/large/' . $oldImage), public_path('assets/images/UserPic/medium/' . $oldImage), public_path('assets/images/UserPic/small/' . $oldImage)
+                public_path('assets/images/UserPic/large/' . $oldImage), public_path('assets/images/UserPic/medium/' . $oldImage), public_path('assets/images/UserPic/small/' . $oldImage)
             );
             // 返回成功信息
             return Redirect::back()->with('success', '操作成功。');
@@ -60,7 +64,8 @@ class SiteSettingController extends SiteController {
         }
     }
 
-    public function postIntro() {
+    public function postIntro()
+    {
 //        echo Input::get('intro');die;
         $intro = str_replace("\n", "\n<br>", Input::get('intro'));
         $userdb = Userdb::find(Session::get('user')['uid']);

@@ -1,26 +1,32 @@
 <?php
 
-class SiteController extends BaseController {
+class SiteController extends BaseController
+{
 
     //get one user info by uid
-    protected function getUserInfo($uid) {
+    protected function getUserInfo($uid)
+    {
         return Userdb::where('uid', $uid)->first();
     }
 
-    protected function checkUserRelation($follower) {
+    protected function checkUserRelation($follower)
+    {
         return FriendList::whereRaw('uid = ? AND follow_uid = ?', array(Session::get('user')['uid'], $follower))
-                        ->pluck('id');
+            ->pluck('id');
     }
 
-    protected function countFollow($uid) {
+    protected function countFollow($uid)
+    {
         return FriendList::where('uid', $uid)->count();
     }
 
-    protected function countFans($uid) {
+    protected function countFans($uid)
+    {
         return FriendList::where('follow_uid', $uid)->count();
     }
 
-    protected function transformStatus($status) {
+    protected function transformStatus($status)
+    {
         switch ($status) {
             case 'want':
                 return 1;
@@ -33,8 +39,9 @@ class SiteController extends BaseController {
         }
     }
 
-    protected function checkScore($score) {
-        $score = (int) $score;
+    protected function checkScore($score)
+    {
+        $score = (int)$score;
         if ($score <= 10 && $score > 0) {
             return $score;
         } else {
@@ -42,8 +49,9 @@ class SiteController extends BaseController {
         }
     }
 
-    protected function checkStatus($status) {
-        $status = (int) $status;
+    protected function checkStatus($status)
+    {
+        $status = (int)$status;
         if ($status == 1 || $status == 2 || $status == 3) {
             return $status;
         } else {
@@ -51,7 +59,8 @@ class SiteController extends BaseController {
         }
     }
 
-    protected function statusToField($status) {
+    protected function statusToField($status)
+    {
         switch ($status) {
             case 1:
                 return 'play_want_num';
@@ -62,7 +71,8 @@ class SiteController extends BaseController {
         }
     }
 
-    protected function tagsStringToArray($tags) {
+    protected function tagsStringToArray($tags)
+    {
         if ($tags) {
             for ($i = 0; $i < 5; $i++) {
                 $tags = trim($tags);

@@ -1,8 +1,10 @@
 <?php
 
-class SiteIndexController extends SiteController {
+class SiteIndexController extends SiteController
+{
 
-    public function getIndex() {
+    public function getIndex()
+    {
 //        var_dump(Auth::check());die;
         if (Session::has('user')) {
             return Redirect::to('user');
@@ -11,7 +13,8 @@ class SiteIndexController extends SiteController {
         }
     }
 
-    public function postIndex() {
+    public function postIndex()
+    {
         $credentials = array('email' => Input::get('email'), 'password' => Input::get('password'));
         if (Auth::attempt($credentials)) {
             Session::put('user', Auth::user());
@@ -21,17 +24,20 @@ class SiteIndexController extends SiteController {
         }
     }
 
-    public function getLogout() {
+    public function getLogout()
+    {
         Session::flush();
         Auth::logout();
         return Redirect::to('/');
     }
 
-    public function getRegister() {
+    public function getRegister()
+    {
         return View::make('Site.index.register');
     }
 
-    public function postRegister() {
+    public function postRegister()
+    {
         $rules = array(
             'username' => 'required|min:6|max:20|unique:userdb',
             'password' => 'required|min:6|max:20',
@@ -55,11 +61,13 @@ class SiteIndexController extends SiteController {
         }
     }
 
-    public function getRegisterSuccess() {
+    public function getRegisterSuccess()
+    {
         return View::make('Site.index.register-success');
     }
 
-    public function postRegisterUsername() {
+    public function postRegisterUsername()
+    {
         $rules = array('username' => 'required|min:1|max:20|unique:userdb');
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -69,7 +77,8 @@ class SiteIndexController extends SiteController {
         }
     }
 
-    public function postRegisterEmail() {
+    public function postRegisterEmail()
+    {
         $rules = array('email' => 'required|email|unique:userdb');
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

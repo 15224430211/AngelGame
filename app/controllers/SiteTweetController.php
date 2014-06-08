@@ -1,14 +1,16 @@
 <?php
 
-class SiteTweetController extends SiteController {
+class SiteTweetController extends SiteController
+{
 
-    public function getIndex() {
+    public function getIndex()
+    {
         return View::make('Site.tweet.index')
-                        ->with('tweetList', $this->tweetList())
-        ;
+            ->with('tweetList', $this->tweetList());
     }
 
-    public function postIndex() {
+    public function postIndex()
+    {
         $tweet_content = new TweetContent();
         $tweet_content->content = Input::get('content');
         $tweet_content->uid = Session::get('user')['uid'];
@@ -16,14 +18,16 @@ class SiteTweetController extends SiteController {
         return Redirect::back();
     }
 
-    public function postCommentList() {
+    public function postCommentList()
+    {
         $mid = Input::get('mid');
         $sql = 'SELECT T1.*,T2.uid,T2.avatar,T2.username FROM ag_tweet_comment T1 LEFT JOIN '
-                . 'ag_userdb T2 ON T1.uid = T2.uid WHERE T1.mid = ?';
+            . 'ag_userdb T2 ON T1.uid = T2.uid WHERE T1.mid = ?';
         echo json_encode(DB::select($sql, array($mid)));
     }
 
-    public function postCommentSubmit() {
+    public function postCommentSubmit()
+    {
         $content = Input::get('content');
         $mid = Input::get('mid');
         if ($mid > TweetContent::max('mid') || $mid < 1 || strlen($content) < 1 || strlen($content) > 150) {
@@ -41,17 +45,19 @@ class SiteTweetController extends SiteController {
         }
     }
 
-    public function retweet() {
+    public function retweet()
+    {
         $mid = Input::get('mid');
     }
 
-    protected function tweetList() {
+    protected function tweetList()
+    {
         $sql = 'select T1.*,T2.uid,T2.avatar,T2.username FROM'
-                . '(SELECT * FROM ag_tweet_content where uid in '
-                . '(SELECT follow_uid FROM ag_friend_list WHERE uid = ?) '
-                . 'or uid = ?) T1 '
-                . 'LEFT JOIN ag_userdb T2 ON T1.uid = T2.uid '
-                . 'ORDER BY T1.mid DESC';
+            . '(SELECT * FROM ag_tweet_content where uid in '
+            . '(SELECT follow_uid FROM ag_friend_list WHERE uid = ?) '
+            . 'or uid = ?) T1 '
+            . 'LEFT JOIN ag_userdb T2 ON T1.uid = T2.uid '
+            . 'ORDER BY T1.mid DESC';
         $uid = Session::get('user')['uid'];
         return DB::select($sql, array($uid, $uid));
     }
