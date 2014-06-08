@@ -14,7 +14,7 @@
 Route::get('/', 'SiteIndexController@getIndex');
 Route::controller('index', 'SiteIndexController');
 Route::get('logout', 'SiteIndexController@getLogout');
-Route::group(array('before' => 'islogin'), function() {
+Route::group(array('before' => 'islogin'), function () {
     Route::get('user/{uid?}', 'SiteUserController@getIndex');
     Route::get('user/{uid}/{status}', 'SiteUserController@getGameList');
     Route::post('user-game-relation', 'SiteUserController@ajaxUserGameRelation');
@@ -25,6 +25,6 @@ Route::group(array('before' => 'islogin'), function() {
     Route::get('follow/{uid?}', 'SiteFriendController@getFollow');
     Route::post('follow', 'SiteFriendController@postFollow');
     Route::get('fans/{uid?}', 'SiteFriendController@getFans');
-    Route::controller('tweet','SiteTweetController');
+    Route::controller('tweet', 'SiteTweetController');
 //    Route::post('fans', 'SiteFriendController@postFans');
 });
