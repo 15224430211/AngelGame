@@ -14,12 +14,12 @@
                         <div class="col-md-12">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active">
-                                    <a href="/follow/{{$user_info['uid']}}">{{$user_info['username']}}的关注 
+                                    <a href="/follow/{{$user_info['uid']}}">{{$user_info['username']}}的关注
                                         <span class="badge">{{$countFollow}}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/fans/{{$user_info['uid']}}">{{$user_info['username']}}的粉丝 
+                                    <a href="/fans/{{$user_info['uid']}}">{{$user_info['username']}}的粉丝
                                         <span class="badge badge-danger">{{$countFans}}</span>
                                     </a>
                                 </li>
@@ -34,16 +34,19 @@
                                 <a href="/user/{{$follower->uid}}">
                                     <img src="/assets/images/UserPic/large/{{$follower->avatar}}">
                                 </a>
+
                                 <div class="caption text-center">
                                     <a href="/user/{{$follower->uid}}">
                                         <h3>{{$follower->username}}</h3>
                                     </a>
                                     <!--<p>Cras justo odio...</p>-->
                                     @if($follower->friend_list_id)
-                                    <button follower="{{$follower->uid}}" class="btn btn-danger" role="button">取消关注</button>
+                                    <button follower="{{$follower->uid}}" class="btn btn-danger" role="button">取消关注
+                                    </button>
                                     @elseif(!$follower->friend_list_id)
-                                    <button follower="{{$follower->uid}}" class="btn btn-danger" role="button">关注他</button>
-                                    @endif                                    
+                                    <button follower="{{$follower->uid}}" class="btn btn-danger" role="button">关注他
+                                    </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>

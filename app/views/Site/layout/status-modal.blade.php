@@ -33,6 +33,7 @@
                     <div class="col-md-6">
                         <div id="star">
                             <p><strong>游戏评分:</strong></p>
+
                             <div class="star" id="star0"></div>
                             <div class="star" id="star1"></div>
                             <div class="star" id="star2"></div>
@@ -45,13 +46,14 @@
                             <div class="star" id="star9"></div>
                             <hr>
                             <p><b>我的评分: <span id="userplay_score"></span></b></p>
-                        </div>    
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label>游戏短评:</label>
-                        <textarea id="new-comment" class="form-control" rows="3" maxlength="200" placeholder="请不要超过200个字符"></textarea>
+                        <textarea id="new-comment" class="form-control" rows="3" maxlength="200"
+                                  placeholder="请不要超过200个字符"></textarea>
                     </div>
                 </div>
             </div>
@@ -60,7 +62,8 @@
                 <input id="hidden-play-status" type="hidden" value="">
                 <input id="hidden-game-uid" type="hidden" value="">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button id="status-modal-submit" type="button" class="btn btn-success"  data-loading-text="正在加载...">保存</button>
+                <button id="status-modal-submit" type="button" class="btn btn-success" data-loading-text="正在加载...">保存
+                </button>
             </div>
         </div>
     </div>

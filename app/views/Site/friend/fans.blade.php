@@ -14,12 +14,12 @@
                         <div class="col-md-12">
                             <ul class="nav nav-pills nav-justified">
                                 <li>
-                                    <a href="/follow/{{$user_info['uid']}}">{{$user_info['username']}}的关注 
+                                    <a href="/follow/{{$user_info['uid']}}">{{$user_info['username']}}的关注
                                         <span class="badge badge-danger">{{$countFollow}}</span>
                                     </a>
                                 </li>
                                 <li class="active">
-                                    <a href="/fans/{{$user_info['uid']}}">{{$user_info['username']}}的粉丝 
+                                    <a href="/fans/{{$user_info['uid']}}">{{$user_info['username']}}的粉丝
                                         <span class="badge">{{$countFans}}</span>
                                     </a>
                                 </li>
@@ -34,6 +34,7 @@
                                 <a href="/user/{{$fan->uid}}">
                                     <img src="/assets/images/UserPic/large/{{$fan->avatar}}">
                                 </a>
+
                                 <div class="caption text-center">
                                     <a href="/user/{{$fan->uid}}">
                                         <h3>{{$fan->username}}</h3>

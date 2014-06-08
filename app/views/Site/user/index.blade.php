@@ -15,14 +15,17 @@
                         <div class="col-md-12">
                             <h4>正在玩的游戏······<a href="/user/{{$user_info['uid']}}/playing">({{$playing_num}})部</a></h4>
                         </div>
-                    </div><!--playing-->
+                    </div>
+                    <!--playing-->
                     <div class="row">
                         @foreach($playing_games as $playing_game)
                         <div class="col-md-2">
                             <div class="thumbnail" title="{{$playing_game->name_1}}&#10;{{$playing_game->name_2}}">
                                 <a href="/game/{{$playing_game->game_uid}}" game_uid="{{$playing_game->game_uid}}">
-                                    <img data-src="holder.js/300x200" src="/assets/images/GamePic/{{$playing_game->game_pic}}">
+                                    <img data-src="holder.js/300x200"
+                                         src="/assets/images/GamePic/{{$playing_game->game_pic}}">
                                 </a>
+
                                 <div class="caption text-center">
                                     <a href='#'><b>{{$playing_game->name_1}}</b></a>
                                 </div>
@@ -35,14 +38,17 @@
                         <div class="col-md-12">
                             <h4>已经玩过的游戏······<a href="/user/{{$user_info['uid']}}/played">({{$played_num}})部</a></h4>
                         </div>
-                    </div><!--played-->
+                    </div>
+                    <!--played-->
                     <div class="row">
                         @foreach($played_games as $played_game)
                         <div class="col-md-2">
                             <div class="thumbnail" title="{{$played_game->name_1}}&#10;{{$played_game->name_2}}">
                                 <a href="/game/{{$played_game->game_uid}}" game_uid="{{$played_game->game_uid}}">
-                                    <img data-src="holder.js/300x200" src="/assets/images/GamePic/{{$played_game->game_pic}}">
+                                    <img data-src="holder.js/300x200"
+                                         src="/assets/images/GamePic/{{$played_game->game_pic}}">
                                 </a>
+
                                 <div class="caption text-center">
                                     <a href='#'><b>{{$played_game->name_1}}</b></a>
                                 </div>
@@ -55,14 +61,17 @@
                         <div class="col-md-12">
                             <h4>想玩的游戏······<a href="/user/{{$user_info['uid']}}/want">({{$play_want_num}})部</a></h4>
                         </div>
-                    </div><!--want-->
+                    </div>
+                    <!--want-->
                     <div class="row">
                         @foreach($play_want_games as $play_want_game)
                         <div class="col-md-2">
                             <div class="thumbnail" title="{{$play_want_game->name_1}}&#10;{{$play_want_game->name_2}}">
                                 <a href="/game/{{$play_want_game->game_uid}}" game_uid="{{$play_want_game->game_uid}}">
-                                    <img data-src="holder.js/300x200" src="/assets/images/GamePic/{{$play_want_game->game_pic}}">
+                                    <img data-src="holder.js/300x200"
+                                         src="/assets/images/GamePic/{{$play_want_game->game_pic}}">
                                 </a>
+
                                 <div class="caption text-center">
                                     <a href='#'><b>{{$play_want_game->name_1}}</b></a>
                                 </div>
