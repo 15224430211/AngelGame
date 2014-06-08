@@ -75,6 +75,7 @@
             </div>
         </div>
         @include('Site.layout.user-info')
+        @include('Site.ad.300X600')
     </div>
 </div>
 @stop

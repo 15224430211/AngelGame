@@ -65,7 +65,7 @@
             @endif
             <hr class="hr-margin-10">
             <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="col-md-12">
                     <p id="content-intro">{{$user_info->intro}}</p>
                 </div>
             </div>
