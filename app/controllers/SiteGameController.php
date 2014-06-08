@@ -51,6 +51,23 @@ class SiteGameController extends SiteController
         }
     }
 
+    public function getEditInfo($game_uid = null)
+    {
+        $game_uid ? "" : die;
+        $game_details = GameInfo::find($game_uid)->toArray();
+        if ($game_details) {
+            return View::make('Site.game.info')
+                ->with('game_details', $game_details);
+        } else {
+            die;
+        }
+    }
+
+    public function postEditInfo()
+    {
+
+    }
+
     public function userGameRelation($uid, $game_uid)
     {
         $userGameRelation = UserGameRelation::whereRaw('uid = ? AND game_uid = ?', array($uid, $game_uid))

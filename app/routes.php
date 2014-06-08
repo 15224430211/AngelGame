@@ -20,6 +20,7 @@ Route::group(array('before' => 'islogin'), function () {
     Route::post('user-game-relation', 'SiteUserController@ajaxUserGameRelation');
     Route::get('search/{q?}', 'SiteSearchController@getIndex');
     Route::get('game/{game?}', 'SiteGameController@getIndex');
+    Route::get('game/{game?}/edit', 'SiteGameController@getEditInfo');
     Route::post('game', 'SiteGameController@postIndex');
     Route::controller('setting', 'SiteSettingController');
     Route::get('follow/{uid?}', 'SiteFriendController@getFollow');

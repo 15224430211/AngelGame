@@ -17,7 +17,7 @@
                                      data-src="holder.js/300x200" alt="...">
 
                                 <div class="caption">
-                                    <a href="#" class="btn btn-default" role="button">上传图片或信息</a>
+                                    <a style="text-decoration:line-through;" href="/game/{{$game_details['game_uid']}}/edit" class="btn btn-default disabled" role="button">上传图片或信息</a>
                                 </div>
                             </div>
                         </div>
