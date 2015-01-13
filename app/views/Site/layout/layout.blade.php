@@ -97,9 +97,9 @@
 <script src="/assets/scripts/Site/global.js" type="text/javascript"></script>
 <div style="display: none;">
     <script type="text/javascript">
-//var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-//document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0aec8e6005edfbd1c801d8c4a0f139e1' type='text/javascript'%3E%3C/script%3E"));
-</script>
+        //var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        //document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0aec8e6005edfbd1c801d8c4a0f139e1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
 </div>
 </body>
 </html>
