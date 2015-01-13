@@ -10,7 +10,6 @@
   | and give it the Closure to execute when that URI is requested.
   |
  */
-
 Route::get('/', 'SiteIndexController@getIndex');
 Route::controller('index', 'SiteIndexController');
 Route::get('logout', 'SiteIndexController@getLogout');

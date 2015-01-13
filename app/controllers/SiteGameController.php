@@ -7,10 +7,17 @@ class SiteGameController extends SiteController
     {
         $game_uid ? "" : die;
         $game_details = GameInfo::find($game_uid)->toArray();
+        $recommend_game_sql = 'SELECT *,COUNT(*) as counts FROM ag_user_game_relation LEFT JOIN
+ag_game_info ON ag_game_info.game_uid = ag_user_game_relation.game_uid
+ WHERE uid IN
+ (SELECT uid FROM ag_user_game_relation WHERE game_uid = ?)
+GROUP BY ag_user_game_relation.game_uid ORDER BY counts DESC LIMIT 12';
+        $recommend_games = DB::select($recommend_game_sql, array($game_uid));
         if ($game_details) {
             $userGameRelation = $this->userGameRelation(Session::get('user')['uid'], $game_uid);
             return View::make('Site.game.detail')
                 ->with('game_details', $game_details)
+                ->with('recommend_games', $recommend_games)
                 ->with('userGameRelation', $userGameRelation);
         } else {
             die;
@@ -55,6 +62,7 @@ class SiteGameController extends SiteController
     {
         $game_uid ? "" : die;
         $game_details = GameInfo::find($game_uid)->toArray();
+
         if ($game_details) {
             return View::make('Site.game.info')
                 ->with('game_details', $game_details);

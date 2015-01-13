@@ -131,6 +131,28 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
+                            <h5>喜欢此游戏的人也喜欢······</h5>
+                            <div class="row user-game-list">
+                                @foreach($recommend_games as $recommend_game)
+                                <div class="col-md-2">
+                                    <div class="thumbnail" title="{{$recommend_game->name_1}}&#10;{{$recommend_game->name_2}}">
+                                        <a href="/game/{{$recommend_game->game_uid}}" game_uid="{{$recommend_game->game_uid}}">
+                                            <img data-src="holder.js/300x200"
+                                                 src="/assets/images/GamePic/{{$recommend_game->game_pic}}">
+                                        </a>
+
+                                        <div class="caption text-center">
+                                            <a href='#'><b>{{$recommend_game->name_1}}</b></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
                             <h5>游戏图赏······</h5>
                         </div>
                     </div>
